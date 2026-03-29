@@ -15,6 +15,13 @@ const posts = [
   { slug: 'distill-io-vs-visualping', title: 'Distill.io vs Visualping: Which Is Better in 2026?', description: 'Head-to-head comparison of Distill.io and Visualping for website change monitoring.', date: '2026-03-24', readTime: '8 min' },
   { slug: 'monitor-competitor-website-changes-ecommerce', title: 'How E-commerce Brands Monitor Competitor Websites', description: 'E-commerce specific guide to monitoring competitor pricing, promotions, and product changes.', date: '2026-03-22', readTime: '10 min' },
   { slug: 'website-monitoring-api-build-vs-buy', title: 'Website Monitoring API: Build vs. Buy in 2026', description: 'Should you build your own website change detection system or use an existing API?', date: '2026-03-20', readTime: '12 min' },
+  { slug: 'competitor-pricing-strategy-saas', title: 'Competitor Pricing Strategy for SaaS: How to React', description: 'Framework for responding to competitor pricing changes.', date: '2026-03-18', readTime: '10 min' },
+  { slug: 'hexowatch-alternative', title: 'Best Hexowatch Alternatives for Website Monitoring (2026)', description: 'Looking for a Hexowatch alternative? Compare tools.', date: '2026-03-16', readTime: '7 min' },
+  { slug: 'competitive-analysis-template', title: 'Competitive Analysis Template: Free Framework for 2026', description: 'Step-by-step framework for analyzing competitors.', date: '2026-03-14', readTime: '11 min' },
+  { slug: 'website-change-notification-tools', title: 'Website Change Notification Tools: Get Alerted Instantly', description: 'Set up instant notifications when a website changes.', date: '2026-03-12', readTime: '7 min' },
+  { slug: 'crayon-alternative-affordable', title: 'Affordable Crayon Alternatives for Competitive Intelligence', description: 'Crayon costs $3,000+/month. Here are affordable alternatives.', date: '2026-03-10', readTime: '8 min' },
+  { slug: 'monitor-competitor-seo-strategy', title: "How to Monitor Your Competitor's SEO Strategy", description: 'Track competitor keywords, content, and ranking changes.', date: '2026-03-08', readTime: '10 min' },
+  { slug: 'market-intelligence-for-product-managers', title: 'Market Intelligence for Product Managers: Tools & Workflows', description: 'How PMs can use competitive intelligence for better product decisions.', date: '2026-03-06', readTime: '9 min' },
 ];
 
 export default function BlogPage() {
