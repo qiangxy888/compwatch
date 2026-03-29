@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {},
+  // better-sqlite3 is server-only
+  serverExternalPackages: ['better-sqlite3'],
 };
 
 export default nextConfig;
