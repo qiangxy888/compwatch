@@ -10,6 +10,11 @@ const posts = [
   { slug: 'visualping-alternative-2026', title: 'Best Visualping Alternatives in 2026: AI-Powered Options', description: 'Looking for a Visualping alternative? Compare the top website monitoring tools with AI capabilities.', date: '2026-03-29', readTime: '10 min' },
   { slug: 'how-to-monitor-competitor-websites', title: 'How to Monitor Competitor Websites: Complete Guide', description: 'Learn how to track competitor pricing, features, and content changes automatically.', date: '2026-03-28', readTime: '12 min' },
   { slug: 'website-change-detection-tools', title: 'Website Change Detection Tools: 2026 Comparison', description: 'Compare the best tools for detecting website changes — from free to enterprise.', date: '2026-03-25', readTime: '8 min' },
+  { slug: 'track-competitor-pricing-changes', title: 'How to Track Competitor Pricing Changes Automatically', description: 'Learn how to set up automated competitor price monitoring to stay ahead of market changes.', date: '2026-03-27', readTime: '9 min' },
+  { slug: 'competitive-intelligence-for-startups', title: 'Competitive Intelligence for Startups: A Practical Guide', description: 'How startups can build an effective competitive intelligence system on a budget.', date: '2026-03-26', readTime: '11 min' },
+  { slug: 'distill-io-vs-visualping', title: 'Distill.io vs Visualping: Which Is Better in 2026?', description: 'Head-to-head comparison of Distill.io and Visualping for website change monitoring.', date: '2026-03-24', readTime: '8 min' },
+  { slug: 'monitor-competitor-website-changes-ecommerce', title: 'How E-commerce Brands Monitor Competitor Websites', description: 'E-commerce specific guide to monitoring competitor pricing, promotions, and product changes.', date: '2026-03-22', readTime: '10 min' },
+  { slug: 'website-monitoring-api-build-vs-buy', title: 'Website Monitoring API: Build vs. Buy in 2026', description: 'Should you build your own website change detection system or use an existing API?', date: '2026-03-20', readTime: '12 min' },
 ];
 
 export default function BlogPage() {
