@@ -1,4 +1,4 @@
-import { scrapeUrl } from './scraper';
+import { smartScrape } from './scraper';
 import { analyzeChange } from './ai/analyze';
 import { buildChangeEmail } from './email/templates';
 import { sendEmail } from './email/send';
@@ -17,10 +17,10 @@ export interface CheckResult {
 
 // Check a single monitor
 async function checkMonitor(monitor: any): Promise<CheckResult> {
-  const { id, url, email, name } = monitor;
+  const { id, url, email, name, scrape_layer } = monitor;
 
-  // 1. Scrape
-  const scrape = await scrapeUrl(url);
+  // 1. Scrape (auto-upgrade to Playwright for layer 2 monitors)
+  const scrape = await smartScrape(url, scrape_layer || 1);
   if (!scrape.success) {
     updateMonitorStatus(id, 'error', scrape.error);
     return { monitorId: id, url, changed: false, error: scrape.error };

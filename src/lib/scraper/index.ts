@@ -78,8 +78,35 @@ export async function scrapeUrl(url: string): Promise<ScrapeResult> {
     const contentHash = createHash('sha256').update(content).digest('hex');
 
     return { success: true, content, contentHash, title, layer: 1 };
-  } catch (err: any) {
-    const error = err.name === 'AbortError' ? 'Timeout (15s)' : err.message;
+  } catch (err: unknown) {
+    const e = err as Error & { name?: string };
+    const error = e.name === 'AbortError' ? 'Timeout (15s)' : (e.message || 'Unknown error');
     return { success: false, content: '', contentHash: '', title: '', error, layer: 1 };
   }
+}
+
+/**
+ * Smart scrape: try Layer 1 (fetch), fall back to Layer 2 (Playwright) if needed.
+ * Layer 2 is only used when explicitly enabled (scrape_layer >= 2).
+ */
+export async function smartScrape(url: string, maxLayer: number = 1): Promise<ScrapeResult> {
+  // Layer 1: fetch + cheerio
+  const result = await scrapeUrl(url);
+  if (result.success) return result;
+
+  // Layer 2: Playwright (if enabled and content was too short / SPA detected)
+  if (maxLayer >= 2) {
+    try {
+      const { scrapeWithPlaywright } = await import('./playwright');
+      return await scrapeWithPlaywright(url);
+    } catch (err: unknown) {
+      // Playwright not available — return layer 1 result with note
+      return {
+        ...result,
+        error: `${result.error} | Playwright unavailable: ${err instanceof Error ? err.message : 'unknown'}`,
+      };
+    }
+  }
+
+  return result;
 }
