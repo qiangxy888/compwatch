@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
+<body style="margin:0;padding:0;background:#f7f7f7;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#fff;">
+  <!-- Header -->
+  <tr><td style="background:#1a1a2e;padding:24px 40px;">
+    <table width="100%"><tr>
+      <td><span style="color:#fff;font-size:18px;font-weight:bold;">👁️ CompWatch</span></td>
+      <td style="text-align:right;"><span style="background:#ef4444;color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:bold;">CHANGE DETECTED</span></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- Alert Summary -->
+  <tr><td style="padding:28px 40px 0;">
+    <h2 style="color:#1a1a2e;margin:0 0 4px;">{{PAGE_TITLE}}</h2>
+    <p style="color:#888;margin:0 0 16px;font-size:13px;">
+      🔗 <a href="{{PAGE_URL}}" style="color:#4f46e5;">{{PAGE_URL}}</a> · Detected {{DETECTED_TIME}}
+    </p>
+  </td></tr>
+
+  <!-- AI Summary -->
+  <tr><td style="padding:0 40px;">
+    <div style="background:#fefce8;border-left:4px solid #eab308;padding:16px 20px;border-radius:0 8px 8px 0;margin:12px 0;">
+      <h3 style="margin:0 0 8px;color:#854d0e;font-size:14px;">🤖 AI Summary</h3>
+      <p style="margin:0;color:#713f12;line-height:1.6;font-size:14px;">{{AI_SUMMARY}}</p>
+    </div>
+  </td></tr>
+
+  <!-- Changes Detail -->
+  <tr><td style="padding:16px 40px;">
+    <h3 style="color:#1a1a2e;margin:0 0 12px;font-size:15px;">What Changed:</h3>
+
+    <!-- Added -->
+    {{#IF_ADDED}}
+    <div style="margin:0 0 12px;">
+      <span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">+ ADDED</span>
+      <div style="border-left:3px solid #22c55e;padding:8px 12px;margin:8px 0;background:#f0fdf4;border-radius:0 4px 4px 0;">
+        <p style="margin:0;font-size:13px;color:#333;line-height:1.5;">{{ADDED_CONTENT}}</p>
+      </div>
+    </div>
+    {{/IF_ADDED}}
+
+    <!-- Removed -->
+    {{#IF_REMOVED}}
+    <div style="margin:0 0 12px;">
+      <span style="background:#fef2f2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">− REMOVED</span>
+      <div style="border-left:3px solid #ef4444;padding:8px 12px;margin:8px 0;background:#fef2f2;border-radius:0 4px 4px 0;">
+        <p style="margin:0;font-size:13px;color:#333;line-height:1.5;text-decoration:line-through;">{{REMOVED_CONTENT}}</p>
+      </div>
+    </div>
+    {{/IF_REMOVED}}
+
+    <!-- Modified -->
+    {{#IF_MODIFIED}}
+    <div style="margin:0 0 12px;">
+      <span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">~ MODIFIED</span>
+      <div style="border-left:3px solid #f59e0b;padding:8px 12px;margin:8px 0;background:#fffbeb;border-radius:0 4px 4px 0;">
+        <p style="margin:0;font-size:13px;color:#333;line-height:1.5;">{{MODIFIED_CONTENT}}</p>
+      </div>
+    </div>
+    {{/IF_MODIFIED}}
+  </td></tr>
+
+  <!-- Change Stats -->
+  <tr><td style="padding:0 40px 20px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:8px;">
+      <tr>
+        <td style="padding:12px 16px;text-align:center;border-right:1px solid #e2e8f0;">
+          <div style="font-size:20px;font-weight:bold;color:#1a1a2e;">{{CHANGE_PERCENT}}%</div>
+          <div style="font-size:11px;color:#888;">Content Changed</div>
+        </td>
+        <td style="padding:12px 16px;text-align:center;border-right:1px solid #e2e8f0;">
+          <div style="font-size:20px;font-weight:bold;color:#22c55e;">+{{ADDED_COUNT}}</div>
+          <div style="font-size:11px;color:#888;">Added</div>
+        </td>
+        <td style="padding:12px 16px;text-align:center;border-right:1px solid #e2e8f0;">
+          <div style="font-size:20px;font-weight:bold;color:#ef4444;">-{{REMOVED_COUNT}}</div>
+          <div style="font-size:11px;color:#888;">Removed</div>
+        </td>
+        <td style="padding:12px 16px;text-align:center;">
+          <div style="font-size:20px;font-weight:bold;color:#f59e0b;">{{MODIFIED_COUNT}}</div>
+          <div style="font-size:11px;color:#888;">Modified</div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- CTA -->
+  <tr><td style="padding:0 40px 28px;text-align:center;">
+    <a href="{{DIFF_URL}}" style="background:#4f46e5;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
+      View Full Diff →
+    </a>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#f7f7f7;padding:16px 40px;text-align:center;">
+    <p style="color:#999;font-size:11px;margin:0;">
+      Monitoring {{TOTAL_PAGES}} pages · Next check in {{NEXT_CHECK}}<br>
+      <a href="{{SETTINGS_URL}}" style="color:#999;">Settings</a> · <a href="{{UNSUBSCRIBE_URL}}" style="color:#999;">Unsubscribe</a>
+    </p>
+  </td></tr>
+</table>
+</body>
+</html>

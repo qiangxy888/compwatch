@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
+<body style="margin:0;padding:0;background:#f7f7f7;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#fff;">
+  <!-- Header -->
+  <tr><td style="background:#1a1a2e;padding:24px 40px;">
+    <table width="100%"><tr>
+      <td><span style="color:#fff;font-size:18px;font-weight:bold;">👁️ CompWatch</span></td>
+      <td style="text-align:right;"><span style="color:#a0a0cc;font-size:13px;">Weekly Digest · {{WEEK_DATE}}</span></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- Summary -->
+  <tr><td style="padding:28px 40px 0;">
+    <h2 style="color:#1a1a2e;margin:0 0 16px;">Your Weekly Competitor Report</h2>
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4ff;border-radius:8px;">
+      <tr>
+        <td style="padding:16px;text-align:center;border-right:1px solid #dde4f0;">
+          <div style="font-size:28px;font-weight:bold;color:#4f46e5;">{{TOTAL_CHANGES}}</div>
+          <div style="font-size:12px;color:#666;">Changes Detected</div>
+        </td>
+        <td style="padding:16px;text-align:center;border-right:1px solid #dde4f0;">
+          <div style="font-size:28px;font-weight:bold;color:#1a1a2e;">{{PAGES_MONITORED}}</div>
+          <div style="font-size:12px;color:#666;">Pages Monitored</div>
+        </td>
+        <td style="padding:16px;text-align:center;">
+          <div style="font-size:28px;font-weight:bold;color:#22c55e;">{{PAGES_STABLE}}</div>
+          <div style="font-size:12px;color:#666;">No Changes</div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Changes List -->
+  <tr><td style="padding:24px 40px 0;">
+    <h3 style="color:#1a1a2e;margin:0 0 16px;">📋 Changes This Week</h3>
+
+    <!-- Repeat for each change -->
+    {{#EACH_CHANGE}}
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin:0 0 12px;">
+      <table width="100%"><tr>
+        <td>
+          <div style="font-weight:bold;color:#1a1a2e;font-size:14px;">{{CHANGE_PAGE_TITLE}}</div>
+          <div style="color:#888;font-size:12px;margin-top:2px;">{{CHANGE_URL}} · {{CHANGE_DATE}}</div>
+        </td>
+        <td style="text-align:right;vertical-align:top;">
+          <span style="background:{{SEVERITY_BG}};color:{{SEVERITY_COLOR}};padding:2px 8px;border-radius:4px;font-size:11px;font-weight:bold;">{{SEVERITY}}</span>
+        </td>
+      </tr></table>
+      <p style="color:#555;font-size:13px;margin:8px 0 0;line-height:1.5;">{{CHANGE_AI_SUMMARY}}</p>
+    </div>
+    {{/EACH_CHANGE}}
+  </td></tr>
+
+  <!-- AI Insight -->
+  <tr><td style="padding:16px 40px;">
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px;">
+      <h3 style="margin:0 0 8px;color:#166534;font-size:14px;">💡 AI Insight of the Week</h3>
+      <p style="margin:0;color:#15803d;font-size:13px;line-height:1.6;">{{WEEKLY_INSIGHT}}</p>
+    </div>
+  </td></tr>
+
+  <!-- Upgrade CTA (for free users) -->
+  {{#IF_FREE_USER}}
+  <tr><td style="padding:16px 40px;">
+    <div style="background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:8px;padding:20px;text-align:center;">
+      <p style="color:#fff;margin:0 0 12px;font-size:15px;font-weight:bold;">Want to monitor more pages?</p>
+      <p style="color:#c7d2fe;margin:0 0 16px;font-size:13px;">You're using {{USED_PAGES}}/{{MAX_PAGES}} free pages. Upgrade to Pro for unlimited monitoring.</p>
+      <a href="{{UPGRADE_URL}}" style="background:#fff;color:#4f46e5;padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
+        Upgrade to Pro — $19/mo →
+      </a>
+    </div>
+  </td></tr>
+  {{/IF_FREE_USER}}
+
+  <!-- CTA -->
+  <tr><td style="padding:8px 40px 28px;text-align:center;">
+    <a href="{{DASHBOARD_URL}}" style="background:#1a1a2e;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
+      View Full Dashboard →
+    </a>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#f7f7f7;padding:16px 40px;text-align:center;">
+    <p style="color:#999;font-size:11px;margin:0;">
+      CompWatch Weekly Digest · <a href="{{DIGEST_SETTINGS}}" style="color:#999;">Change frequency</a><br>
+      <a href="{{UNSUBSCRIBE_URL}}" style="color:#999;">Unsubscribe</a> · <a href="{{PRIVACY_URL}}" style="color:#999;">Privacy</a>
+    </p>
+  </td></tr>
+</table>
+</body>
+</html>
