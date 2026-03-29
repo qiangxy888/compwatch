@@ -23,6 +23,7 @@ export async function POST(request: Request) {
       results,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('Check run failed:', err);
+    return NextResponse.json({ error: 'Check run failed' }, { status: 500 });
   }
 }

@@ -1,6 +1,7 @@
 import { randomBytes } from 'crypto';
 import { cookies } from 'next/headers';
 import { getDb, genId } from './db';
+import type { MagicLink, Session } from './db';
 
 const SESSION_COOKIE = 'cw_session';
 const SESSION_MAX_AGE = 30 * 24 * 60 * 60; // 30 days in seconds
@@ -18,7 +19,7 @@ export function createMagicLink(email: string) {
 }
 
 export function verifyMagicLink(token: string) {
-  const link = getDb().prepare('SELECT * FROM magic_links WHERE token = ? AND used = 0 AND expires_at > datetime(?)').get(token, new Date().toISOString()) as any;
+  const link = getDb().prepare('SELECT * FROM magic_links WHERE token = ? AND used = 0 AND expires_at > datetime(?)').get(token, new Date().toISOString()) as MagicLink | undefined;
 
   if (!link) return null;
 
@@ -44,12 +45,12 @@ export async function getSession() {
   if (!sessionId) return null;
 
   const session = getDb().prepare(`
-    SELECT s.*, u.email, u.name, u.plan 
+    SELECT s.*, u.email, u.name, u.plan, u.stripe_customer_id
     FROM sessions s JOIN users u ON s.user_id = u.id 
     WHERE s.id = ? AND s.expires_at > datetime(?)
-  `).get(sessionId, new Date().toISOString()) as any;
+  `).get(sessionId, new Date().toISOString()) as Session | undefined;
 
-  return session;
+  return session || null;
 }
 
 export async function setSessionCookie(sessionId: string) {

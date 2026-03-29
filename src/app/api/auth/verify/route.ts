@@ -19,7 +19,10 @@ export async function GET(request: Request) {
   let user = getUserByEmail(email);
   if (!user) {
     const userId = createUser(email);
-    user = { id: userId, email };
+    user = getUserByEmail(email);
+    if (!user) {
+      return NextResponse.redirect(new URL('/login?error=creation_failed', request.url));
+    }
   }
 
   // Create session
